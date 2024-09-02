@@ -21,6 +21,15 @@
       gtag('js', new Date());
 
       gtag('config', 'G-1HD1DWJ6H1');
+      
+      // Function to track button clicks
+      function trackButtonClick() {
+          gtag('event', 'button_click', {
+              'event_category': 'engagement',
+              'event_label': 'Submit Button',
+              'value': '1'
+          });
+      }
     </script>
 
     <style>
@@ -52,7 +61,7 @@
     
     <div class="container">
         <h1>Hello Harini</h1>
-        <button>Submit</button>
+        <button onclick="trackButtonClick()">Submit</button>
     </div>
 </body>
 </html>
