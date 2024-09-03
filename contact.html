@@ -15,11 +15,13 @@
             background-color: #f0f0f0;
         }
         .container {
-            text-align: center;
+            width: 90%;
+            max-width: 600px;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         input, textarea {
             width: 100%;
@@ -41,6 +43,18 @@
         .success-message {
             color: green;
             margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 70%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                width: 50%;
+            }
         }
     </style>
 </head>
