@@ -20,13 +20,59 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
         }
         .message {
             font-size: 24px;
             color: green;
+            margin-bottom: 20px;
+        }
+        .order-details {
+            text-align: left;
+            font-size: 18px;
+        }
+        .order-details div {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class
+    <div class="container">
+        <div class="message">
+            Order Confirmed Success
+        </div>
+        <div class="order-details">
+            <div><strong>Order ID:</strong> <span id="orderId"></span></div>
+            <div><strong>Order Status:</strong> <span id="orderStatus"></span></div>
+            <div><strong>Order Date:</strong> <span id="orderDate"></span></div>
+            <div><strong>Product ID:</strong> <span id="productId"></span></div>
+            <div><strong>Amount:</strong> $<span id="amount"></span></div>
+            <div><strong>Delivery Date:</strong> <span id="deliveryDate"></span></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameter by name
+        function getParameterByName(name) {
+            let url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Set the query parameters in the corresponding spans
+        document.getElementById('orderId').innerText = getParameterByName('orderId');
+        document.getElementById('orderStatus').innerText = getParameterByName('orderStatus');
+        document.getElementById('orderDate').innerText = getParameterByName('orderDate');
+        document.getElementById('productId').innerText = getParameterByName('productId');
+        document.getElementById('amount').innerText = getParameterByName('amount');
+        document.getElementById('deliveryDate').innerText = getParameterByName('deliveryDate');
+    </script>
+
+</body>
+</html>
