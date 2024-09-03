@@ -59,6 +59,9 @@
         <div class="order-detail">
             <strong>Amount:</strong> $<span id="amount"></span>
         </div>
+        <div class="order-detail">
+            <strong>Delivery Date:</strong> <span id="deliveryDate"></span>
+        </div>
         <button onclick="confirmOrder()">Confirm</button>
     </div>
 
@@ -78,15 +81,17 @@
         const orderDate = getFormattedDate();
         const productId = getRandomNumber(5);
         const amount = getRandomNumber(3);
+        const deliveryDate = getFormattedDate(3);
 
         document.getElementById('orderId').innerText = orderId;
         document.getElementById('orderDate').innerText = orderDate;
         document.getElementById('productId').innerText = productId;
         document.getElementById('amount').innerText = amount;
+        document.getElementById('deliveryDate').innerText = deliveryDate;
 
         // Confirm button functionality
         function confirmOrder() {
-            window.location.href = `orderconfirmation.html?orderId=${orderId}&orderStatus=Success&orderDate=${orderDate}&productId=${productId}&amount=${amount}`;
+            window.location.href = `order-confirmation.html?orderId=${orderId}&orderStatus=Success&orderDate=${orderDate}&productId=${productId}&amount=${amount}&deliveryDate=${deliveryDate}`;
         }
     </script>
 
