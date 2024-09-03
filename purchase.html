@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Details</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .order-detail {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Purchase Details</h2>
+        <div class="order-detail">
+            <strong>Order ID:</strong> <span id="orderId"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Order Status:</strong> <span id="orderStatus">Success</span>
+        </div>
+        <div class="order-detail">
+            <strong>Order Date:</strong> <span id="orderDate"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Product ID:</strong> <span id="productId"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Amount:</strong> $<span id="amount"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Delivery Date:</strong> <span id="deliveryDate"></span>
+        </div>
+    </div>
+
+    <script>
+        function getRandomNumber(length) {
+            return Math.floor(Math.pow(10, length-1) + Math.random() * 9 * Math.pow(10, length-1));
+        }
+
+        function getFormattedDate(offsetDays = 0) {
+            let date = new Date();
+            date.setDate(date.getDate() + offsetDays);
+            return date.toISOString().split('T')[0];
+        }
+
+        document.getElementById('orderId').innerText = getRandomNumber(5);
+        document.getElementById('orderDate').innerText = getFormattedDate();
+        document.getElementById('productId').innerText = getRandomNumber(5);
+        document.getElementById('amount').innerText = getRandomNumber(3);
+        document.getElementById('deliveryDate').innerText = getFormattedDate(3);
+    </script>
+
+</body>
+</html>
