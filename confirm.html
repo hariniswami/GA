@@ -73,11 +73,22 @@
             return date.toISOString().split('T')[0];
         }
 
-        document.getElementById('orderId').innerText = getRandomNumber(5);
-        document.getElementById('orderDate').innerText = getFormattedDate();
-        document.getElementById('productId').innerText = getRandomNumber(5);
-        document.getElementById('amount').innerText = getRandomNumber(3);
+        // Generate and display values
+        const orderId = getRandomNumber(5);
+        const orderDate = getFormattedDate();
+        const productId = getRandomNumber(5);
+        const amount = getRandomNumber(3);
 
+        document.getElementById('orderId').innerText = orderId;
+        document.getElementById('orderDate').innerText = orderDate;
+        document.getElementById('productId').innerText = productId;
+        document.getElementById('amount').innerText = amount;
+
+        // Confirm button functionality
         function confirmOrder() {
-            const orderId = document.getElementById('orderId').innerText;
-            const orderStatus = document.getElement
+            window.location.href = `order-confirmation.html?orderId=${orderId}&orderStatus=Success&orderDate=${orderDate}&productId=${productId}&amount=${amount}`;
+        }
+    </script>
+
+</body>
+</html>
