@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Harini</title>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PM22XT4J');</script>
-    <!-- End Google Tag Manager -->
-    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TRXGEXMC6"></script>
     <script>
@@ -23,10 +15,10 @@
       gtag('config', 'G-5TRXGEXMC6');
       
       // Function to track button clicks
-      function trackButtonClick() {
+      function trackButtonClick(buttonLabel) {
           gtag('event', 'button_click', {
               'event_category': 'engagement',
-              'event_label': 'Submit Button',
+              'event_label': buttonLabel + ' Button',
               'value': '1'
           });
       }
@@ -46,6 +38,7 @@
             text-align: center;
         }
         button {
+            margin: 10px; /* Add margin to separate the buttons */
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -54,14 +47,11 @@
 </head>
 <body>
     
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM22XT4J"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
     <div class="container">
         <h1>Hello Harini</h1>
-        <button onclick="trackButtonClick()">Submit</button>
+        <button onclick="trackButtonClick('Login')">Login</button>
+        <button onclick="trackButtonClick('Register')">Register</button>
+        <button onclick="trackButtonClick('Submit')">Submit</button>
     </div>
 </body>
 </html>
