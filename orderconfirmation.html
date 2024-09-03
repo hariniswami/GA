@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .order-detail {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Order Confirmation</h2>
+        <div class="order-detail">
+            <strong>Order ID:</strong> <span id="orderId"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Order Status:</strong> <span id="orderStatus"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Order Date:</strong> <span id="orderDate"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Product ID:</strong> <span id="productId"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Amount:</strong> $<span id="amount"></span>
+        </div>
+        <div class="order-detail">
+            <strong>Delivery Date:</strong> <span id="deliveryDate"></span>
+        </div>
+    </div>
+
+    <script>
+        function getParameterByName(name) {
+            let url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        function getFormattedDate(offsetDays = 0) {
+            let date = new Date();
+            date.setDate(date.getDate() + offsetDays);
+            return date.toISOString().split('T')[0];
+        }
+
+        document.getElementById('orderId').innerText = getParameterByName('orderId');
+        document.getElementById('orderStatus').innerText = getParameterByName('orderStatus');
+        document.getElementById('orderDate').innerText = getParameterByName('orderDate');
+        document.getElementById('productId').innerText = getParameterByName('productId');
+        document.getElementById('amount').innerText = getParameterByName('amount');
+        document.getElementById('deliveryDate
