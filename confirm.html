@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchase Details</title>
+    <title>Confirm Details</title>
     <style>
         body {
             display: flex;
@@ -27,12 +27,23 @@
             margin: 10px 0;
             font-size: 18px;
         }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Purchase Details</h2>
+        <h2>Confirm Details</h2>
         <div class="order-detail">
             <strong>Order ID:</strong> <span id="orderId"></span>
         </div>
@@ -48,9 +59,7 @@
         <div class="order-detail">
             <strong>Amount:</strong> $<span id="amount"></span>
         </div>
-        <div class="order-detail">
-            <strong>Delivery Date:</strong> <span id="deliveryDate"></span>
-        </div>
+        <button onclick="confirmOrder()">Confirm</button>
     </div>
 
     <script>
@@ -68,8 +77,7 @@
         document.getElementById('orderDate').innerText = getFormattedDate();
         document.getElementById('productId').innerText = getRandomNumber(5);
         document.getElementById('amount').innerText = getRandomNumber(3);
-        document.getElementById('deliveryDate').innerText = getFormattedDate(3);
-    </script>
 
-</body>
-</html>
+        function confirmOrder() {
+            const orderId = document.getElementById('orderId').innerText;
+            const orderStatus = document.getElement
