@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WPS45TD7');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPS45TD7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <h1>User has successfully logged in</h1>
+
+        <!-- Hidden Fields -->
+        <div style="display: none;">
+            <label for="userid">User ID:</label>
+            <span id="userid"></span><br>
+            <label for="usercountry">User Country:</label>
+            <span id="usercountry">NZ</span><br>
+            <label for="userplan">User Plan:</label>
+            <span id="userplan">Gold</span><br>
+            <label for="loginmethod">Login Method:</label>
+            <span id="loginmethod">Email</span><br>
+        </div>
+    </div>
+
+    <script>
+        // Generate random 7-digit User ID
+        var userId = Math.floor(1000000 + Math.random() * 9000000);
+        document.getElementById('userid').textContent = userId;
+
+        // Push hidden data to the dataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'loginSuccess',
+            'userId': userId,
+            'userCountry': 'NZ',
+            'userPlan': 'Gold',
+            'loginMethod': 'Email'
+        });
+    </script>
+
+</body>
+</html>
