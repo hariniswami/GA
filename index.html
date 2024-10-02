@@ -35,6 +35,9 @@
             font-size: 16px;
             cursor: pointer;
         }
+        .google-btn {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +54,9 @@
         <button>Submit</button>
         <button onclick="window.location.href='contact.html'">Contact Us</button>
         <button onclick="window.location.href='confirm.html'">Purchase</button> <!-- Purchase Button -->
-        <button onclick="window.location.href='https://www.google.com'">Google</button> <!-- New Google Button -->
+        <a href="https://www.google.com" target="_blank" class="google-btn">
+            <button>Google</button>
+        </a> <!-- Google Button opens in a new tab -->
     </div>
 </body>
 </html>
