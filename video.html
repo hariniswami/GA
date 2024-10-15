@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Videos</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-52Q47JSZ');</script>
+    <!-- End Google Tag Manager -->
+    
     <style>
         body {
             display: flex;
@@ -25,6 +34,11 @@
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-52Q47JSZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <!-- YouTube Video -->
     <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/TeiV1LZUPv4?si=M8hIYNTFBm4c_Jr_" 
@@ -36,13 +50,96 @@
 
     <!-- Vimeo Video -->
     <div class="video-container">
-        <iframe src="https://player.vimeo.com/video/689993923?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+        <iframe id="vimeo-player" src="https://player.vimeo.com/video/689993923?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                 style="width:100%; height:315px;" 
                 title="00 cover_saas_marketing">
         </iframe>
     </div>
-    
+
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Function to generate random user ID
+        function generateRandomUserID() {
+            return 'user_' + Math.floor(Math.random() * 1000000);
+        }
+
+        // Function to select a random country
+        function getRandomCountry() {
+            const countries = ['US', 'CA', 'GB', 'AU', 'NZ', 'IN', 'DE', 'FR', 'JP', 'BR'];
+            return countries[Math.floor(Math.random() * countries.length)];
+        }
+
+        // Generate random user ID and country
+        const userID = generateRandomUserID();
+        const country = getRandomCountry();
+
+        // Initialize the Vimeo player
+        const vimeoPlayer = new Vimeo.Player(document.getElementById('vimeo-player'));
+
+        // Data Layer for tracking
+        window.dataLayer = window.dataLayer || [];
+
+        // Track video start
+        vimeoPlayer.on('play', function() {
+            window.dataLayer.push({
+                'event': 'videoStart',
+                'videoPlatform': 'Vimeo',
+                'videoTitle': '00 cover_saas_marketing',
+                'userID': userID,
+                'country': country
+            });
+        });
+
+        // Track video progress at 25%, 50%, and 75%
+        vimeoPlayer.on('timeupdate', function(data) {
+            const duration = data.duration;
+            const currentTime = data.seconds;
+            const progress = (currentTime / duration) * 100;
+
+            if (progress >= 25 && progress < 50 && !vimeoPlayer._25Tracked) {
+                window.dataLayer.push({
+                    'event': 'videoProgress',
+                    'videoPlatform': 'Vimeo',
+                    'videoTitle': '00 cover_saas_marketing',
+                    'progress': '25%',
+                    'userID': userID,
+                    'country': country
+                });
+                vimeoPlayer._25Tracked = true;
+            } else if (progress >= 50 && progress < 75 && !vimeoPlayer._50Tracked) {
+                window.dataLayer.push({
+                    'event': 'videoProgress',
+                    'videoPlatform': 'Vimeo',
+                    'videoTitle': '00 cover_saas_marketing',
+                    'progress': '50%',
+                    'userID': userID,
+                    'country': country
+                });
+                vimeoPlayer._50Tracked = true;
+            } else if (progress >= 75 && !vimeoPlayer._75Tracked) {
+                window.dataLayer.push({
+                    'event': 'videoProgress',
+                    'videoPlatform': 'Vimeo',
+                    'videoTitle': '00 cover_saas_marketing',
+                    'progress': '75%',
+                    'userID': userID,
+                    'country': country
+                });
+                vimeoPlayer._75Tracked = true;
+            }
+        });
+
+        // Track video completion
+        vimeoPlayer.on('ended', function() {
+            window.dataLayer.push({
+                'event': 'videoComplete',
+                'videoPlatform': 'Vimeo',
+                'videoTitle': '00 cover_saas_marketing',
+                'userID': userID,
+                'country': country
+            });
+        });
+    </script>
 </body>
 </html>
