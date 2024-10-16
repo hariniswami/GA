@@ -70,9 +70,16 @@
             return countries[Math.floor(Math.random() * countries.length)];
         }
 
-        // Generate random user ID and country
+        // Function to select a random gender
+        function getRandomGender() {
+            const genders = ['Male', 'Female'];
+            return genders[Math.floor(Math.random() * genders.length)];
+        }
+
+        // Generate random user ID, country, and gender
         const userID = generateRandomUserID();
         const country = getRandomCountry();
+        const gender = getRandomGender();
 
         // Initialize the Vimeo player
         const vimeoPlayer = new Vimeo.Player(document.getElementById('vimeo-player'));
@@ -87,7 +94,8 @@
                 'videoPlatform': 'Vimeo',
                 'videoTitle': '00 cover_saas_marketing',
                 'userID': userID,
-                'country': country
+                'country': country,
+                'gender': gender
             });
         });
 
@@ -104,7 +112,8 @@
                     'videoTitle': '00 cover_saas_marketing',
                     'progress': '25%',
                     'userID': userID,
-                    'country': country
+                    'country': country,
+                    'gender': gender
                 });
                 vimeoPlayer._25Tracked = true;
             } else if (progress >= 50 && progress < 75 && !vimeoPlayer._50Tracked) {
@@ -114,7 +123,8 @@
                     'videoTitle': '00 cover_saas_marketing',
                     'progress': '50%',
                     'userID': userID,
-                    'country': country
+                    'country': country,
+                    'gender': gender
                 });
                 vimeoPlayer._50Tracked = true;
             } else if (progress >= 75 && !vimeoPlayer._75Tracked) {
@@ -124,7 +134,8 @@
                     'videoTitle': '00 cover_saas_marketing',
                     'progress': '75%',
                     'userID': userID,
-                    'country': country
+                    'country': country,
+                    'gender': gender
                 });
                 vimeoPlayer._75Tracked = true;
             }
@@ -137,7 +148,8 @@
                 'videoPlatform': 'Vimeo',
                 'videoTitle': '00 cover_saas_marketing',
                 'userID': userID,
-                'country': country
+                'country': country,
+                'gender': gender
             });
         });
     </script>
